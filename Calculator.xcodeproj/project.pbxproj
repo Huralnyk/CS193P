@@ -12,6 +12,7 @@
 		A92689D41E64D0EA00D5BC87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92689D21E64D0EA00D5BC87 /* Main.storyboard */; };
 		A92689D61E64D0EA00D5BC87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A92689D51E64D0EA00D5BC87 /* Assets.xcassets */; };
 		A92689D91E64D0EA00D5BC87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92689D71E64D0EA00D5BC87 /* LaunchScreen.storyboard */; };
+		A98592BE1E67638600FE4BCD /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98592BD1E67638600FE4BCD /* CalculatorBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		A92689D51E64D0EA00D5BC87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A92689D81E64D0EA00D5BC87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A92689DA1E64D0EA00D5BC87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A98592BD1E67638600FE4BCD /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		A92689CD1E64D0EA00D5BC87 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				A98592BD1E67638600FE4BCD /* CalculatorBrain.swift */,
 				A92689D01E64D0EA00D5BC87 /* ViewController.swift */,
 				A92689D21E64D0EA00D5BC87 /* Main.storyboard */,
 				A92689E01E64D0F100D5BC87 /* Supporting Files */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A98592BE1E67638600FE4BCD /* CalculatorBrain.swift in Sources */,
 				A92689D11E64D0EA00D5BC87 /* ViewController.swift in Sources */,
 				A92689CF1E64D0EA00D5BC87 /* AppDelegate.swift in Sources */,
 			);
@@ -307,6 +311,7 @@
 				A92689DF1E64D0EA00D5BC87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
