@@ -33,7 +33,11 @@ struct CalculatorBrain {
         "π": .constant(.pi),
         "e": .constant(M_E),
         "√": .unary(sqrt),
+        "sin": .unary(sin),
         "cos": .unary(cos),
+        "tan": .unary(tan),
+        "log": .unary(log),
+        "x²": .unary({ $0 * $0 }),
         "±": .unary({ -$0 }),
         "×": .binary({ $0 * $1 }),
         "÷": .binary({ $0 / $1 }),
@@ -52,6 +56,7 @@ struct CalculatorBrain {
                     accumulator = function(accumulator!)
                 }
             case .binary(let function):
+                performPendingBinaryOperation()
                 if accumulator != nil {
                     pendingBinaryOperation = PendingBinaryOperation(function: function, firstOperand: accumulator!)
                 }
@@ -62,7 +67,7 @@ struct CalculatorBrain {
     }
     
     private mutating func performPendingBinaryOperation() {
-        if pendingBinaryOperation != nil && accumulator != nil {
+        if resultIsPending {
             accumulator = pendingBinaryOperation!.perform(with: accumulator!)
             pendingBinaryOperation = nil
         }
@@ -74,5 +79,13 @@ struct CalculatorBrain {
     
     var result: Double? {
         return accumulator
+    }
+    
+    var resultIsPending: Bool {
+        return pendingBinaryOperation != nil && accumulator != nil
+    }
+    
+    var description: String {
+        return ""
     }
 }
