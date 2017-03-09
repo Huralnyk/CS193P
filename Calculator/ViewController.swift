@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var history: UILabel!
     
     var userIsInTheMiddleOfTyping = false
     var brain = CalculatorBrain()
@@ -23,6 +24,21 @@ class ViewController: UIViewController {
             display.text = String(newValue)
         }
     }
+    
+    var historyValue: String {
+        get {
+            return history.text ?? ""
+        }
+        set {
+            if newValue.isEmpty {
+                history.text = " "
+            } else {
+                let suffix = brain.resultIsPending ? "..." : "="
+                history.text = "\(newValue) \(suffix)"
+            }
+        }
+    }
+
     
     @IBAction func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle!
@@ -48,7 +64,14 @@ class ViewController: UIViewController {
         }
         if let result = brain.result {
             displayValue = result
+            historyValue = brain.description
         }
+    }
+    
+    @IBAction func resetCalculator(_ sender: UIButton) {
+        brain = CalculatorBrain()
+        displayValue = 0
+        historyValue = ""
     }
 }
 
