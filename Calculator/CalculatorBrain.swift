@@ -13,8 +13,16 @@ struct CalculatorBrain {
     private var accumulator: (value: Double?, description: String) = (nil, "")
     private var pendingBinaryOperation: PendingBinaryOperation?
     
+    let numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.minimumIntegerDigits = 1
+        formatter.maximumFractionDigits = 6
+        return formatter
+    }()
+    
     private enum Operation {
         case constant(Double)
+        case random
         case unary((Double) -> Double)
         case binary((Double, Double) -> Double)
         case equals
@@ -39,13 +47,16 @@ struct CalculatorBrain {
     private var operations: Dictionary<String, Operation> = [
         "π": .constant(.pi),
         "e": .constant(M_E),
+        "Rand": .random,
         "√": .unary(sqrt),
         "sin": .unary(sin),
         "cos": .unary(cos),
         "tan": .unary(tan),
-        "log": .unary(log),
+        "log": .unary(log10),
+        "ln": .unary(log),
         "x²": .unary({ $0 * $0 }),
         "±": .unary({ -$0 }),
+        "xʸ": .binary({ pow($0, $1) }),
         "×": .binary({ $0 * $1 }),
         "÷": .binary({ $0 / $1 }),
         "−": .binary({ $0 - $1 }),
@@ -58,6 +69,9 @@ struct CalculatorBrain {
             switch operation {
             case .constant(let value):
                 accumulator.value = value
+                accumulator.description = symbol
+            case .random:
+                accumulator.value = random()
                 accumulator.description = symbol
             case .unary(let function):
                 if accumulator.value != nil {
@@ -108,6 +122,10 @@ struct CalculatorBrain {
     }
     
     private func format(_ operand: Double) -> String {
-        return String(Int(operand))
+        return numberFormatter.string(from: NSNumber(value: operand))!
+    }
+    
+    private func random() -> Double {
+        return Double(arc4random()) / Double(UInt32.max)
     }
 }

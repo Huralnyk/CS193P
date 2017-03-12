@@ -8,12 +8,22 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
     @IBOutlet weak var history: UILabel!
     
+    let numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 6
+        formatter.minimumIntegerDigits = 1
+        return formatter
+    }()
+    
     var userIsInTheMiddleOfTyping = false
+    
     var brain = CalculatorBrain()
     
     var displayValue: Double {
@@ -21,7 +31,7 @@ class ViewController: UIViewController {
             return Double(display.text!)!
         }
         set {
-            display.text = String(newValue)
+            display.text = numberFormatter.string(from: NSNumber(value: newValue))
         }
     }
     
@@ -72,6 +82,19 @@ class ViewController: UIViewController {
         brain = CalculatorBrain()
         displayValue = 0
         historyValue = ""
+        userIsInTheMiddleOfTyping = false
+    }
+    
+    @IBAction func removeLastDigit() {
+        let characters = display.text!.characters.dropLast()
+        let textToPutInDisplay = String(characters)
+        
+        if textToPutInDisplay.isEmpty {
+            display.text = "0"
+            userIsInTheMiddleOfTyping = false
+        } else {
+           display.text = textToPutInDisplay
+        }
     }
 }
 
