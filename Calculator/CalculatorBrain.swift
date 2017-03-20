@@ -12,6 +12,7 @@ struct CalculatorBrain {
     
     private var accumulator: (value: Double?, description: String) = (nil, "")
     private var pendingBinaryOperation: PendingBinaryOperation?
+    private var memory: [Action] = []
     
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -26,6 +27,16 @@ struct CalculatorBrain {
         case unary((Double) -> Double)
         case binary((Double, Double) -> Double)
         case equals
+    }
+    
+    private enum Operand {
+        case constant(Double)
+        case variable(String)
+    }
+    
+    private enum Action {
+        case operation(symbol: String, operation: Operation)
+        case operand(Operand)
     }
     
     private struct PendingBinaryOperation {
@@ -64,62 +75,105 @@ struct CalculatorBrain {
         "=": .equals
     ]
     
+    
+    // MARK: - Public
+    
+    var result: Double? {
+        return evaluate().result
+    }
+    
+    var resultIsPending: Bool {
+        return evaluate().isPending
+    }
+    
+    var description: String {
+        return evaluate().description
+    }
+    
+    
+    
     mutating func performOperation(_ symbol: String) {
         if let operation = operations[symbol] {
+            memory.append(.operation(symbol: symbol, operation: operation))
+        }
+    }
+    
+    mutating func setOperand(_ value: Double) {
+        memory.append(.operand(.constant(value)))
+    }
+    
+    mutating func setOperand(variable named: String) {
+        memory.append(.operand(.variable(named)))
+    }
+    
+    func evaluate(using variables: [String: Double]? = nil) -> (result: Double?, isPending: Bool, description: String) {
+        var result: Double?
+        var description: String = ""
+        var pendingBinaryOperation: PendingBinaryOperation?
+        
+        func perform(_ operation: Operation, with symbol: String) {
             switch operation {
             case .constant(let value):
-                accumulator.value = value
-                accumulator.description = symbol
+                result = value
+                description = symbol
             case .random:
-                accumulator.value = random()
-                accumulator.description = symbol
+                result = random()
+                description = symbol
             case .unary(let function):
-                if accumulator.value != nil {
-                    accumulator.value = function(accumulator.value!)
-                    if resultIsPending {
-                        accumulator.description = "\(pendingBinaryOperation!.description) \(symbol)(\(accumulator.description))"
+                if result != nil {
+                    result = function(result!)
+                    if pendingBinaryOperation != nil {
+                        description = "\(pendingBinaryOperation!.description) \(symbol)(\(description))"
                         pendingBinaryOperation?.description = ""
                     } else {
-                        accumulator.description = "\(symbol)(\(accumulator.description))"
+                        description = "\(symbol)(\(description))"
                     }
                 }
             case .binary(let function):
                 performPendingBinaryOperation()
-                if accumulator.value != nil {
-                    accumulator.description += " \(symbol)"
-                    pendingBinaryOperation = PendingBinaryOperation(function: function, operand: accumulator.value!)
-                    pendingBinaryOperation?.description = accumulator.description
+                if result != nil {
+                    description += " \(symbol)"
+                    pendingBinaryOperation = PendingBinaryOperation(function: function, operand: result!)
+                    pendingBinaryOperation?.description = description
                 }
             case .equals:
                 performPendingBinaryOperation()
             }
         }
-    }
-    
-    private mutating func performPendingBinaryOperation() {
-        if resultIsPending {
-            accumulator.description = pendingBinaryOperation!.description + " \(accumulator.description)"
-            accumulator.value = pendingBinaryOperation!.perform(with: accumulator.value!)
-            pendingBinaryOperation = nil
+        
+        func performPendingBinaryOperation() {
+            if pendingBinaryOperation != nil && result != nil {
+                description = pendingBinaryOperation!.description + " \(description)"
+                result = pendingBinaryOperation!.perform(with: result!)
+                pendingBinaryOperation = nil
+            }
         }
+        
+        func set(_ operand: Operand) {
+            switch operand {
+            case .constant(let value):
+                result = value
+                description = format(value)
+            case .variable(let name):
+                result = variables?[name] ?? 0
+                description = name
+            }
+        }
+
+        
+        for action in memory {
+            switch action {
+            case let .operation(symbol, operation):
+                perform(operation, with: symbol)
+            case let .operand(operand):
+                set(operand)
+            }
+        }
+        
+        return (result, pendingBinaryOperation != nil, description.trimmingCharacters(in: .whitespacesAndNewlines))
     }
     
-    mutating func setOperand(_ operand: Double) {
-        accumulator.value = operand
-        accumulator.description = format(operand)
-    }
-    
-    var result: Double? {
-        return accumulator.value
-    }
-    
-    var resultIsPending: Bool {
-        return pendingBinaryOperation != nil && accumulator.value != nil
-    }
-    
-    var description: String {
-        return accumulator.description.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
+    // MARK: - Private Helpers
     
     private func format(_ operand: Double) -> String {
         return numberFormatter.string(from: NSNumber(value: operand))!

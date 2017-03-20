@@ -34,21 +34,8 @@ class ViewController: UIViewController {
             display.text = numberFormatter.string(from: NSNumber(value: newValue))
         }
     }
-    
-    var historyValue: String {
-        get {
-            return history.text ?? ""
-        }
-        set {
-            if newValue.isEmpty {
-                history.text = " "
-            } else {
-                let suffix = brain.resultIsPending ? "..." : "="
-                history.text = "\(newValue) \(suffix)"
-            }
-        }
-    }
 
+    
     
     @IBAction func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle!
@@ -72,16 +59,18 @@ class ViewController: UIViewController {
         if let mathematicalSymbol = sender.currentTitle {
             brain.performOperation(mathematicalSymbol)
         }
-        if let result = brain.result {
+        let (result, isPending, description) = brain.evaluate()
+        if let result = result {
+            let suffix = isPending ? "..." : "="
             displayValue = result
-            historyValue = brain.description
+            history.text = "\(description) \(suffix)"
         }
     }
     
     @IBAction func resetCalculator(_ sender: UIButton) {
         brain = CalculatorBrain()
         displayValue = 0
-        historyValue = ""
+        history.text = " "
         userIsInTheMiddleOfTyping = false
     }
     
@@ -96,5 +85,12 @@ class ViewController: UIViewController {
            display.text = textToPutInDisplay
         }
     }
+    
+    @IBAction func setVariable(_ sender: UIButton) {
+        brain.setOperand(variable: "M")
+    }
+    
+    @IBAction func updateVariable(_ sender: UIButton) {
+        let (result, isPending, description) = brain.evaluate(using: ["M": displayValue])
+    }
 }
-
