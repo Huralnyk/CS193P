@@ -23,8 +23,8 @@ class ViewController: UIViewController {
     }()
     
     var userIsInTheMiddleOfTyping = false
-    
     var brain = CalculatorBrain()
+    var variables: [String: Double]?
     
     var displayValue: Double {
         get {
@@ -36,6 +36,7 @@ class ViewController: UIViewController {
     }
 
     
+    // MARK: - Actions
     
     @IBAction func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle!
@@ -59,12 +60,7 @@ class ViewController: UIViewController {
         if let mathematicalSymbol = sender.currentTitle {
             brain.performOperation(mathematicalSymbol)
         }
-        let (result, isPending, description) = brain.evaluate()
-        if let result = result {
-            let suffix = isPending ? "..." : "="
-            displayValue = result
-            history.text = "\(description) \(suffix)"
-        }
+        updateUI()
     }
     
     @IBAction func resetCalculator(_ sender: UIButton) {
@@ -72,6 +68,7 @@ class ViewController: UIViewController {
         displayValue = 0
         history.text = " "
         userIsInTheMiddleOfTyping = false
+        variables = nil
     }
     
     @IBAction func removeLastDigit() {
@@ -88,9 +85,23 @@ class ViewController: UIViewController {
     
     @IBAction func setVariable(_ sender: UIButton) {
         brain.setOperand(variable: "M")
+        userIsInTheMiddleOfTyping = false
     }
     
     @IBAction func updateVariable(_ sender: UIButton) {
-        let (result, isPending, description) = brain.evaluate(using: ["M": displayValue])
+        variables = ["M": displayValue]
+        userIsInTheMiddleOfTyping = false
+        updateUI()
+    }
+    
+    // MARK: - Helpers
+    
+    private func updateUI() {
+        let (result, isPending, description) = brain.evaluate(using: variables)
+        if let result = result {
+            let suffix = isPending ? "..." : "="
+            displayValue = result
+            history.text = "\(description) \(suffix)"
+        }
     }
 }

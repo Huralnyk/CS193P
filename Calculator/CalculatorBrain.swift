@@ -8,6 +8,14 @@
 
 import Foundation
 
+func factorial(_ n: Double) -> Double {
+    if n >= 0 {
+        return n == 0 ? 1 : n * factorial(n - 1)
+    } else {
+        return 0 / 0
+    }
+}
+
 struct CalculatorBrain {
     
     private var accumulator: (value: Double?, description: String) = (nil, "")
@@ -66,8 +74,12 @@ struct CalculatorBrain {
         "log": .unary(log10),
         "ln": .unary(log),
         "x²": .unary({ $0 * $0 }),
+        "eˣ": .unary({ pow(M_E, $0) }),
+        "1/x": .unary({ 1 / $0 }),
+        "x!": .unary(factorial),
         "±": .unary({ -$0 }),
         "xʸ": .binary({ pow($0, $1) }),
+        "x³": .unary( { pow($0, 3) }),
         "×": .binary({ $0 * $1 }),
         "÷": .binary({ $0 / $1 }),
         "−": .binary({ $0 - $1 }),
