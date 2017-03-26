@@ -102,8 +102,6 @@ struct CalculatorBrain {
         return evaluate().description
     }
     
-    
-    
     mutating func performOperation(_ symbol: String) {
         if let operation = operations[symbol] {
             memory.append(.operation(symbol: symbol, operation: operation))
@@ -116,6 +114,11 @@ struct CalculatorBrain {
     
     mutating func setOperand(variable named: String) {
         memory.append(.operand(.variable(named)))
+    }
+    
+    mutating func undo() {
+        guard !memory.isEmpty else { return }
+        memory.removeLast()
     }
     
     func evaluate(using variables: [String: Double]? = nil) -> (result: Double?, isPending: Bool, description: String) {
@@ -172,6 +175,7 @@ struct CalculatorBrain {
             }
         }
 
+        
         
         for action in memory {
             switch action {

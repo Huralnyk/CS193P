@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
     @IBOutlet weak var history: UILabel!
+    @IBOutlet weak var memory: UILabel!
     
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -23,7 +24,14 @@ class ViewController: UIViewController {
     }()
     
     var userIsInTheMiddleOfTyping = false
-    var brain = CalculatorBrain()
+    var userIsUsingMemorizedVariable = false
+    
+    var brain = CalculatorBrain() {
+        didSet {
+            updateUI()
+        }
+    }
+    
     var variables: [String: Double]?
     
     var displayValue: Double {
@@ -60,7 +68,6 @@ class ViewController: UIViewController {
         if let mathematicalSymbol = sender.currentTitle {
             brain.performOperation(mathematicalSymbol)
         }
-        updateUI()
     }
     
     @IBAction func resetCalculator(_ sender: UIButton) {
@@ -68,18 +75,14 @@ class ViewController: UIViewController {
         displayValue = 0
         history.text = " "
         userIsInTheMiddleOfTyping = false
-        variables = nil
+        userIsUsingMemorizedVariable = false
     }
     
-    @IBAction func removeLastDigit() {
-        let characters = display.text!.characters.dropLast()
-        let textToPutInDisplay = String(characters)
-        
-        if textToPutInDisplay.isEmpty {
-            display.text = "0"
-            userIsInTheMiddleOfTyping = false
+    @IBAction func touchBackspace() {
+        if userIsInTheMiddleOfTyping {
+            removeLastDigit()
         } else {
-           display.text = textToPutInDisplay
+            brain.undo()
         }
     }
     
@@ -88,8 +91,9 @@ class ViewController: UIViewController {
         userIsInTheMiddleOfTyping = false
     }
     
-    @IBAction func updateVariable(_ sender: UIButton) {
+    @IBAction func startUsingVariable(_ sender: UIButton) {
         variables = ["M": displayValue]
+        userIsUsingMemorizedVariable = true
         userIsInTheMiddleOfTyping = false
         updateUI()
     }
@@ -97,11 +101,26 @@ class ViewController: UIViewController {
     // MARK: - Helpers
     
     private func updateUI() {
-        let (result, isPending, description) = brain.evaluate(using: variables)
-        if let result = result {
-            let suffix = isPending ? "..." : "="
-            displayValue = result
-            history.text = "\(description) \(suffix)"
+        let (result, isPending, description) = brain.evaluate(using: userIsUsingMemorizedVariable ? variables : nil)
+        let suffix = isPending ? "..." : "="
+        displayValue = result ?? 0
+        history.text = description.isEmpty ? " " : "\(description) \(suffix)"
+        if let memorizedValue = variables?["M"] {
+            memory.text = "M = \(memorizedValue)"
+        } else {
+            memory.text = " "
+        }
+    }
+    
+    private func removeLastDigit() {
+        let characters = display.text!.characters.dropLast()
+        let textToPutInDisplay = String(characters)
+        
+        if textToPutInDisplay.isEmpty {
+            display.text = "0"
+            userIsInTheMiddleOfTyping = false
+        } else {
+            display.text = textToPutInDisplay
         }
     }
 }
