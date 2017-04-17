@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A91454401EA4EB9E004DA855 /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914543F1EA4EB9E004DA855 /* SegueHandler.swift */; };
+		A91454421EA4ED5D004DA855 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91454411EA4ED5D004DA855 /* Extensions.swift */; };
 		A918F5AE1E884B1F0014D4EC /* AxesDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A918F5AD1E884B1F0014D4EC /* AxesDrawer.swift */; };
 		A918F5B21E899E7A0014D4EC /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A918F5B11E899E7A0014D4EC /* GraphViewController.swift */; };
 		A918F5B41E899E9A0014D4EC /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A918F5B31E899E9A0014D4EC /* GraphView.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A914543F1EA4EB9E004DA855 /* SegueHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandler.swift; sourceTree = "<group>"; };
+		A91454411EA4ED5D004DA855 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A918F5AD1E884B1F0014D4EC /* AxesDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxesDrawer.swift; sourceTree = "<group>"; };
 		A918F5B11E899E7A0014D4EC /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		A918F5B31E899E9A0014D4EC /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
@@ -64,6 +68,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A91454431EA4FCE9004DA855 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A918F5AD1E884B1F0014D4EC /* AxesDrawer.swift */,
+				A914543F1EA4EB9E004DA855 /* SegueHandler.swift */,
+				A91454411EA4ED5D004DA855 /* Extensions.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		A92689C21E64D0EA00D5BC87 = {
 			isa = PBXGroup;
 			children = (
@@ -88,9 +102,9 @@
 				A98592BD1E67638600FE4BCD /* CalculatorBrain.swift */,
 				A92689D01E64D0EA00D5BC87 /* CalculatorViewController.swift */,
 				A918F5B11E899E7A0014D4EC /* GraphViewController.swift */,
-				A918F5AD1E884B1F0014D4EC /* AxesDrawer.swift */,
 				A918F5B31E899E9A0014D4EC /* GraphView.swift */,
 				A92689D21E64D0EA00D5BC87 /* Main.storyboard */,
+				A91454431EA4FCE9004DA855 /* Utilities */,
 				A92689E01E64D0F100D5BC87 /* Supporting Files */,
 			);
 			path = Calculator;
@@ -166,6 +180,7 @@
 				TargetAttributes = {
 					A92689CA1E64D0EA00D5BC87 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = TEB3BLN4BF;
 						ProvisioningStyle = Automatic;
 					};
 					A9B27BFD1E71B75B0073C52F = {
@@ -223,6 +238,8 @@
 				A98592BE1E67638600FE4BCD /* CalculatorBrain.swift in Sources */,
 				A918F5B21E899E7A0014D4EC /* GraphViewController.swift in Sources */,
 				A918F5AE1E884B1F0014D4EC /* AxesDrawer.swift in Sources */,
+				A91454401EA4EB9E004DA855 /* SegueHandler.swift in Sources */,
+				A91454421EA4ED5D004DA855 /* Extensions.swift in Sources */,
 				A92689D11E64D0EA00D5BC87 /* CalculatorViewController.swift in Sources */,
 				A92689CF1E64D0EA00D5BC87 /* AppDelegate.swift in Sources */,
 				A918F5B41E899E9A0014D4EC /* GraphView.swift in Sources */,
@@ -364,6 +381,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TEB3BLN4BF;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huralnyk.Calculator;
@@ -376,6 +394,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TEB3BLN4BF;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huralnyk.Calculator;

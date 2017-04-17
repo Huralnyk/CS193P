@@ -16,7 +16,7 @@ func factorial(_ n: Double) -> Double {
     }
 }
 
-struct CalculatorBrain {
+struct CalculatorBrain: CustomStringConvertible {
     
     private var accumulator: (value: Double?, description: String) = (nil, "")
     private var pendingBinaryOperation: PendingBinaryOperation?

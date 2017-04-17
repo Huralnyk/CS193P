@@ -15,6 +15,13 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var display: UILabel!
     @IBOutlet weak var history: UILabel!
     @IBOutlet weak var memory: UILabel!
+    @IBOutlet weak var graphButton: UIButton!
+    
+    @IBOutlet var buttons: [UIButton]! {
+        didSet {
+            buttons.forEach { $0.setBackgroundImage(UIImage(color: $0.backgroundColor!), for: .normal) }
+        }
+    }
     
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -43,6 +50,10 @@ class CalculatorViewController: UIViewController {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        splitViewController?.delegate = self
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +130,7 @@ class CalculatorViewController: UIViewController {
         } else {
             memory.text = " "
         }
+        graphButton.isEnabled = !isPending
     }
     
     private func removeLastDigit() {
@@ -132,4 +144,46 @@ class CalculatorViewController: UIViewController {
             display.text = textToPutInDisplay
         }
     }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segueIdentifier(for: segue) {
+        case .drawGraph:
+            if let graphController = segue.destination.contentViewController as? GraphViewController {
+                graphController.function = { self.brain.evaluate(using: ["M": $0]).result ?? 0 }
+                graphController.title = brain.description
+            }
+        }
+    }
 }
+
+// MARK: - Segue Handler
+
+extension CalculatorViewController: SegueHandler {
+    
+    enum SegueIdentifier: String {
+        case drawGraph
+    }
+}
+
+// MARK: - Extension
+
+extension CalculatorViewController: UISplitViewControllerDelegate {
+    
+    func splitViewController(
+        _ splitViewController: UISplitViewController,
+        collapseSecondary secondaryViewController: UIViewController,
+        onto primaryViewController: UIViewController) -> Bool {
+        
+        if primaryViewController.contentViewController == self,
+            let graphController = secondaryViewController.contentViewController as? GraphViewController,
+            graphController.function == nil {
+            return true
+        }
+        
+        return false
+    }
+}
+
+
