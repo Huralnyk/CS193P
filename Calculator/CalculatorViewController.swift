@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CalculatorViewController.swift
 //  Calculator
 //
 //  Created by Oleksii Huralnyk on 2/27/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
     
@@ -21,6 +21,14 @@ class ViewController: UIViewController {
         }
         set {
             display.text = String(newValue)
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        brain.addUnaryOperation("✅") { [weak weakSelf = self] in
+            weakSelf?.display.textColor = .green
+            return sqrt($0)
         }
     }
     

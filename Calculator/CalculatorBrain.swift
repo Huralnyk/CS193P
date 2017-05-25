@@ -42,6 +42,10 @@ struct CalculatorBrain {
         "=": .equals
     ]
     
+    mutating func addUnaryOperation(_ symbol: String, operation: @escaping (Double) -> Double) {
+        operations[symbol] = .unary(operation)
+    }
+    
     mutating func performOperation(_ symbol: String) {
         if let operation = operations[symbol] {
             switch operation {
