@@ -1,0 +1,339 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A9D3742D1EE886BB00FC5AEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D3742C1EE886BB00FC5AEA /* AppDelegate.swift */; };
+		A9D3742F1EE886BB00FC5AEA /* AsteroidsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D3742E1EE886BB00FC5AEA /* AsteroidsViewController.swift */; };
+		A9D374321EE886BB00FC5AEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9D374301EE886BB00FC5AEA /* Main.storyboard */; };
+		A9D374341EE886BB00FC5AEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9D374331EE886BB00FC5AEA /* Assets.xcassets */; };
+		A9D374371EE886BB00FC5AEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9D374351EE886BB00FC5AEA /* LaunchScreen.storyboard */; };
+		A9D374401EE8879A00FC5AEA /* AsteroidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D3743F1EE8879A00FC5AEA /* AsteroidView.swift */; };
+		A9D374421EE8884000FC5AEA /* CoreGraphicsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D374411EE8884000FC5AEA /* CoreGraphicsExtensions.swift */; };
+		A9D374441EE88B1900FC5AEA /* SpaceshipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D374431EE88B1900FC5AEA /* SpaceshipView.swift */; };
+		A9D374461EE88D4100FC5AEA /* AsteroidFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D374451EE88D4100FC5AEA /* AsteroidFieldView.swift */; };
+		A9D374481EE9D0DF00FC5AEA /* AsteroidBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D374471EE9D0DF00FC5AEA /* AsteroidBehavior.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A9D374291EE886BB00FC5AEA /* Asteroids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Asteroids.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9D3742C1EE886BB00FC5AEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A9D3742E1EE886BB00FC5AEA /* AsteroidsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidsViewController.swift; sourceTree = "<group>"; };
+		A9D374311EE886BB00FC5AEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A9D374331EE886BB00FC5AEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A9D374361EE886BB00FC5AEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A9D374381EE886BB00FC5AEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9D3743F1EE8879A00FC5AEA /* AsteroidView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsteroidView.swift; sourceTree = "<group>"; };
+		A9D374411EE8884000FC5AEA /* CoreGraphicsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreGraphicsExtensions.swift; sourceTree = "<group>"; };
+		A9D374431EE88B1900FC5AEA /* SpaceshipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceshipView.swift; sourceTree = "<group>"; };
+		A9D374451EE88D4100FC5AEA /* AsteroidFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsteroidFieldView.swift; sourceTree = "<group>"; };
+		A9D374471EE9D0DF00FC5AEA /* AsteroidBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsteroidBehavior.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A9D374261EE886BB00FC5AEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A9D374201EE886BB00FC5AEA = {
+			isa = PBXGroup;
+			children = (
+				A9D3742B1EE886BB00FC5AEA /* Asteroids */,
+				A9D3742A1EE886BB00FC5AEA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A9D3742A1EE886BB00FC5AEA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9D374291EE886BB00FC5AEA /* Asteroids.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A9D3742B1EE886BB00FC5AEA /* Asteroids */ = {
+			isa = PBXGroup;
+			children = (
+				A9D374301EE886BB00FC5AEA /* Main.storyboard */,
+				A9D3742E1EE886BB00FC5AEA /* AsteroidsViewController.swift */,
+				A9D374471EE9D0DF00FC5AEA /* AsteroidBehavior.swift */,
+				A9D374451EE88D4100FC5AEA /* AsteroidFieldView.swift */,
+				A9D3743F1EE8879A00FC5AEA /* AsteroidView.swift */,
+				A9D374411EE8884000FC5AEA /* CoreGraphicsExtensions.swift */,
+				A9D374431EE88B1900FC5AEA /* SpaceshipView.swift */,
+				A9D374331EE886BB00FC5AEA /* Assets.xcassets */,
+				A9D3743E1EE8870200FC5AEA /* Supporting Files */,
+			);
+			path = Asteroids;
+			sourceTree = "<group>";
+		};
+		A9D3743E1EE8870200FC5AEA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A9D3742C1EE886BB00FC5AEA /* AppDelegate.swift */,
+				A9D374351EE886BB00FC5AEA /* LaunchScreen.storyboard */,
+				A9D374381EE886BB00FC5AEA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A9D374281EE886BB00FC5AEA /* Asteroids */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9D3743B1EE886BB00FC5AEA /* Build configuration list for PBXNativeTarget "Asteroids" */;
+			buildPhases = (
+				A9D374251EE886BB00FC5AEA /* Sources */,
+				A9D374261EE886BB00FC5AEA /* Frameworks */,
+				A9D374271EE886BB00FC5AEA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Asteroids;
+			productName = Asteroids;
+			productReference = A9D374291EE886BB00FC5AEA /* Asteroids.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A9D374211EE886BB00FC5AEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Oleksii Huralnyk";
+				TargetAttributes = {
+					A9D374281EE886BB00FC5AEA = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = TEB3BLN4BF;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A9D374241EE886BB00FC5AEA /* Build configuration list for PBXProject "Asteroids" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A9D374201EE886BB00FC5AEA;
+			productRefGroup = A9D3742A1EE886BB00FC5AEA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A9D374281EE886BB00FC5AEA /* Asteroids */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A9D374271EE886BB00FC5AEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9D374371EE886BB00FC5AEA /* LaunchScreen.storyboard in Resources */,
+				A9D374341EE886BB00FC5AEA /* Assets.xcassets in Resources */,
+				A9D374321EE886BB00FC5AEA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A9D374251EE886BB00FC5AEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9D3742F1EE886BB00FC5AEA /* AsteroidsViewController.swift in Sources */,
+				A9D374421EE8884000FC5AEA /* CoreGraphicsExtensions.swift in Sources */,
+				A9D374461EE88D4100FC5AEA /* AsteroidFieldView.swift in Sources */,
+				A9D3742D1EE886BB00FC5AEA /* AppDelegate.swift in Sources */,
+				A9D374401EE8879A00FC5AEA /* AsteroidView.swift in Sources */,
+				A9D374481EE9D0DF00FC5AEA /* AsteroidBehavior.swift in Sources */,
+				A9D374441EE88B1900FC5AEA /* SpaceshipView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A9D374301EE886BB00FC5AEA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9D374311EE886BB00FC5AEA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A9D374351EE886BB00FC5AEA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9D374361EE886BB00FC5AEA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A9D374391EE886BB00FC5AEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A9D3743A1EE886BB00FC5AEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A9D3743C1EE886BB00FC5AEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TEB3BLN4BF;
+				INFOPLIST_FILE = Asteroids/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.huralnyk.Asteroids;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A9D3743D1EE886BB00FC5AEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TEB3BLN4BF;
+				INFOPLIST_FILE = Asteroids/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.huralnyk.Asteroids;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A9D374241EE886BB00FC5AEA /* Build configuration list for PBXProject "Asteroids" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9D374391EE886BB00FC5AEA /* Debug */,
+				A9D3743A1EE886BB00FC5AEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9D3743B1EE886BB00FC5AEA /* Build configuration list for PBXNativeTarget "Asteroids" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9D3743C1EE886BB00FC5AEA /* Debug */,
+				A9D3743D1EE886BB00FC5AEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A9D374211EE886BB00FC5AEA /* Project object */;
+}
